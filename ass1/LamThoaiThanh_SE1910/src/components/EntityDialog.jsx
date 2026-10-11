@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { Alert, Button, Form, Modal } from 'react-bootstrap'
 import { useNews } from '../context/NewsContext'
 
@@ -20,6 +20,7 @@ export default function EntityDialog({ config, record, onClose, onSaved }) {
   )
   const [error, setError] = useState('')
   const fields = config.fields(data)
+  const firstInput = useRef(null)
 
   function submit(event) {
     event.preventDefault()
@@ -36,6 +37,11 @@ export default function EntityDialog({ config, record, onClose, onSaved }) {
     <Modal
       show
       onHide={onClose}
+      onEntered={() => {
+        if (!['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement?.tagName)) {
+          firstInput.current?.focus()
+        }
+      }}
       centered
       size={config.collection === 'news' ? 'lg' : undefined}
       aria-labelledby="entity-dialog-title"
@@ -73,10 +79,11 @@ export default function EntityDialog({ config, record, onClose, onSaved }) {
                 </Form.Label>
                 {field.options ? (
                   <Form.Select
+                    aria-label={field.label}
+                    ref={index === 0 ? firstInput : undefined}
                     value={values[field.name]}
                     onChange={(event) => setValues({ ...values, [field.name]: event.target.value })}
                     required={field.required}
-                    autoFocus={index === 0}
                     disabled={
                       record?.id === 'user-admin' &&
                       ['username', 'role', 'status'].includes(field.name)
@@ -91,6 +98,8 @@ export default function EntityDialog({ config, record, onClose, onSaved }) {
                   </Form.Select>
                 ) : (
                   <Form.Control
+                    aria-label={field.label}
+                    ref={index === 0 ? firstInput : undefined}
                     as={field.multiline ? 'textarea' : 'input'}
                     rows={field.multiline ? field.rows || 3 : undefined}
                     type={field.type || 'text'}
@@ -99,7 +108,6 @@ export default function EntityDialog({ config, record, onClose, onSaved }) {
                     placeholder={field.placeholder}
                     maxLength={field.maxLength}
                     required={field.required}
-                    autoFocus={index === 0}
                     disabled={record?.id === 'user-admin' && field.name === 'username'}
                     autoComplete="off"
                   />

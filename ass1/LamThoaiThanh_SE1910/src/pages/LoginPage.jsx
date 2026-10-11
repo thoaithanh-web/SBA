@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Navigate, useLocation, useNavigate } from 'react-router-dom'
+import { Navigate, useLocation } from 'react-router-dom'
 import { ArrowRight, Eye, EyeOff, Newspaper, Quote } from 'lucide-react'
 import { Alert, Button, Form } from 'react-bootstrap'
 import { useAuth } from '../context/AuthContext'
@@ -7,14 +7,17 @@ import Brand from '../components/Brand'
 
 export default function LoginPage() {
   const { authenticated, login } = useAuth()
-  const navigate = useNavigate()
   const location = useLocation()
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [visible, setVisible] = useState(false)
   const [error, setError] = useState('')
 
-  if (authenticated) return <Navigate to="/dashboard" replace />
+  const destination = location.state?.from
+  const redirect =
+    destination?.startsWith('/') && !destination.startsWith('//') ? destination : '/dashboard'
+
+  if (authenticated) return <Navigate to={redirect} replace />
 
   function handleSubmit(event) {
     event.preventDefault()
@@ -25,11 +28,6 @@ export default function LoginPage() {
     }
     try {
       login(username, password)
-      const destination = location.state?.from
-      navigate(
-        destination?.startsWith('/') && !destination.startsWith('//') ? destination : '/dashboard',
-        { replace: true },
-      )
     } catch (exception) {
       setError(exception.message)
     }
