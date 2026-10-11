@@ -1,6 +1,29 @@
 import { test, expect } from '@playwright/test'
 import { mkdir } from 'node:fs/promises'
 import { login } from './helpers'
+import { createSeedData } from '../src/data/seed'
+
+test('empty collections show a usable starting point', async ({ page }) => {
+  const seed = createSeedData()
+  seed.news = []
+  seed.categories = []
+  await page.addInitScript(
+    (data) => localStorage.setItem('fu-news:data:v1', JSON.stringify(data)),
+    seed,
+  )
+  await login(page)
+  await expect(page.locator('.stat-number')).toHaveText(['00', '00', '00', '05'])
+  await page.goto('/categories')
+  await expect(page.getByRole('heading', { name: 'No categories yet', exact: true })).toBeVisible()
+  await page.goto('/news')
+  await expect(page.getByRole('heading', { name: 'No articles yet', exact: true })).toBeVisible()
+  await page.getByRole('button', { name: 'New article', exact: true }).first().click()
+  const dialog = page.getByRole('dialog')
+  await dialog.getByLabel('Article title').fill('Test without categories')
+  await dialog.getByLabel('Article content').fill('Content')
+  await dialog.getByRole('button', { name: 'Create article', exact: true }).click()
+  await expect(dialog.getByRole('alert')).toHaveText('Select an existing category.')
+})
 
 test('dashboard totals and URL filters match the source records', async ({ page }) => {
   await login(page)
@@ -51,7 +74,9 @@ test('recover unreadable saved data visibly and allow saving', async ({ page }) 
   const dialog = page.getByRole('dialog')
   await dialog.getByLabel('Category name').fill('Recovered category')
   await dialog.getByRole('button', { name: 'Create category', exact: true }).click()
-  await expect(page.getByRole('alert')).toHaveCount(0)
+  await expect(
+    page.getByRole('alert').filter({ hasText: 'Saved data could not be read' }),
+  ).toHaveCount(0)
   expect(
     await page.evaluate(
       () => JSON.parse(localStorage.getItem('fu-news:data:v1')).categories.length,
