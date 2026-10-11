@@ -13,7 +13,13 @@ import NotFoundPage from './pages/NotFoundPage'
 function ProtectedLayout() {
   const { authenticated } = useAuth()
   const location = useLocation()
-  return authenticated ? <NewsProvider><AdminLayout /></NewsProvider> : <Navigate to="/login" replace state={{ from: location.pathname + location.search }} />
+  return authenticated ? (
+    <NewsProvider>
+      <AdminLayout />
+    </NewsProvider>
+  ) : (
+    <Navigate to="/login" replace state={{ from: location.pathname + location.search }} />
+  )
 }
 
 export default function App() {

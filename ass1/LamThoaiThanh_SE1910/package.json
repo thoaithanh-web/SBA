@@ -9,7 +9,9 @@
     "build": "vite build",
     "preview": "vite preview --host 127.0.0.1",
     "test": "playwright test",
-    "test:ui": "playwright test --ui"
+    "test:ui": "playwright test --ui",
+    "format": "prettier --write src tests *.js *.json index.html",
+    "format:check": "prettier --check src tests *.js *.json index.html"
   },
   "engines": {
     "node": ">=22.12.0"
@@ -25,6 +27,7 @@
   "devDependencies": {
     "@playwright/test": "^1.64.0",
     "@vitejs/plugin-react": "^5.2.0",
+    "prettier": "^3.9.10",
     "vite": "^7.3.7"
   }
 }

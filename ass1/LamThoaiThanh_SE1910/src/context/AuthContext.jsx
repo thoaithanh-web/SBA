@@ -34,7 +34,9 @@ export function AuthProvider({ children }) {
     }
   }
 
-  return <AuthContext.Provider value={{ authenticated, login, logout }}>{children}</AuthContext.Provider>
+  return (
+    <AuthContext.Provider value={{ authenticated, login, logout }}>{children}</AuthContext.Provider>
+  )
 }
 
 export function useAuth() {

@@ -2,7 +2,13 @@ import { createContext, useContext, useState } from 'react'
 import { Alert, Toast, ToastContainer } from 'react-bootstrap'
 import { CheckCircle2, X } from 'lucide-react'
 import { createSeedData } from '../data/seed'
-import { deleteRecord, loadData, persistData, saveRecord, saveSettings } from '../services/newsStore'
+import {
+  deleteRecord,
+  loadData,
+  persistData,
+  saveRecord,
+  saveSettings,
+} from '../services/newsStore'
 
 const NewsContext = createContext(null)
 
@@ -20,7 +26,10 @@ export function NewsProvider({ children }) {
   }
 
   function save(collection, values, id) {
-    commit(saveRecord(data, collection, values, id), `${collection === 'news' ? 'Article' : collection === 'users' ? 'User' : 'Category'} ${id ? 'updated' : 'created'} successfully.`)
+    commit(
+      saveRecord(data, collection, values, id),
+      `${collection === 'news' ? 'Article' : collection === 'users' ? 'User' : 'Category'} ${id ? 'updated' : 'created'} successfully.`,
+    )
   }
 
   function remove(collection, id) {
@@ -37,9 +46,32 @@ export function NewsProvider({ children }) {
 
   return (
     <NewsContext.Provider value={{ data, save, remove, updateSettings, reset }}>
-      {warning && <Alert variant="warning" className="storage-notice m-3" role="alert">{warning}</Alert>}
+      {warning && (
+        <Alert variant="warning" className="storage-notice m-3" role="alert">
+          {warning}
+        </Alert>
+      )}
       {children}
-      <ToastContainer><Toast show={Boolean(notification)} onClose={() => setNotification('')} autohide delay={4500}><Toast.Body><CheckCircle2 size={19} /><span role="status">{notification}</span><button className="icon-button" aria-label="Dismiss notification" onClick={() => setNotification('')}><X size={15} /></button></Toast.Body></Toast></ToastContainer>
+      <ToastContainer>
+        <Toast
+          show={Boolean(notification)}
+          onClose={() => setNotification('')}
+          autohide
+          delay={4500}
+        >
+          <Toast.Body>
+            <CheckCircle2 size={19} />
+            <span role="status">{notification}</span>
+            <button
+              className="icon-button"
+              aria-label="Dismiss notification"
+              onClick={() => setNotification('')}
+            >
+              <X size={15} />
+            </button>
+          </Toast.Body>
+        </Toast>
+      </ToastContainer>
     </NewsContext.Provider>
   )
 }
