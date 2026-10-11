@@ -8,16 +8,16 @@ Use English for commit messages and pull request titles. Keep each change focuse
 - Add future coursework under separate directories such as `lab01/`, `lab02/`.
 - Do not upload lecture PDFs, unrelated files, `node_modules`, build output, `.env` files, tokens or real passwords.
 
-## GitHub Flow
+## Personal repository workflow
 
 1. Start from the latest `main`.
-2. Create a lowercase branch such as `feature/ass1-news-search`, `fix/ass1-dialog-reset` or `docs/lab01-readme`.
+2. Optionally create a lowercase working branch such as `feature/ass1-news-search`, `fix/ass1-dialog-reset` or `docs/lab01-readme`.
 3. Make focused commits with `type(scope): imperative description`.
-4. Push the branch and open a pull request into `main`.
-5. Self-review the diff and wait for the required `verify` check and at least one approving review.
-6. Squash merge after approval. GitHub deletes merged branches automatically.
+4. Self-review the diff, run the checks below, then fast-forward `main` to the verified work.
+5. Push `main` normally. The owner explicitly requested direct publishing without PR/review for this personal repository.
+6. GitHub Actions runs `verify` on each push to `main`. Fix any failing check before continuing development.
 
-The initial repository bootstrap is the only authorized direct push to `main`. Branch protection applies to administrators, requires a review and an up-to-date successful `verify` check, and rejects force pushes.
+Branch protection rejects force pushes and branch deletion. Required PR reviews and blocking status checks are disabled to allow the owner's requested direct-push workflow. PR templates remain available if collaboration is introduced later; reviews are optional in the current workflow.
 
 ## Commit examples
 
@@ -45,6 +45,6 @@ Application and test code must not contain comments. Put explanations in `docs/`
 
 ## Versions
 
-Follow SemVer: MAJOR for breaking changes, MINOR for compatible features, PATCH for compatible fixes. Assignment 01 starts at `1.0.0`. Create release tag `v1.0.0` only after the approved PR is merged; do not tag unmerged work as a stable release.
+Follow SemVer: MAJOR for breaking changes, MINOR for compatible features, PATCH for compatible fixes. Assignment 01 starts at `1.0.0`. Create release tag `v1.0.0` on the verified commit published to `main`.
 
-For later projects, update the verification workflow to include their checks while preserving the required `verify` job name.
+For later projects, update the verification workflow to include their checks.

@@ -14,7 +14,7 @@ Describe the behavior, affected assignment/lab, and reason for the change.
 - [ ] Conventional Commits and branch naming are followed
 - [ ] Documentation and tests reflect the change
 - [ ] No credentials, PDFs, dependencies or build output are included
-- [ ] At least one reviewer approves before squash merge
+- [ ] Checks pass and the diff has been self-reviewed
 
 ## Related issue
 
