@@ -17,6 +17,6 @@ Tổng: 3 browser tests, không bỏ qua test. npm audit sau khi cài đặt bá
 
 Ảnh `01-gallery.png`, `02-detail.png`, `03-mobile.png` được Playwright chụp trực tiếp. Ảnh detail được chụp trước khi đóng modal; ảnh mobile ghi lại navbar đã mở.
 
-Lỗi phát hiện: test chọn Close bị trùng tên giữa nút X và footer → scope locator vào modal footer. Kiểm tra ảnh ngay sau card mount đôi lúc ảnh chưa load → dùng expect.poll chờ điều kiện ảnh, vẫn giữ assertion naturalWidth>0. Sau sửa các test đều PASS. 
+Lỗi phát hiện: test chọn Close bị trùng tên giữa nút X và footer → scope locator vào modal footer. Kiểm tra ảnh ngay sau card mount đôi lúc ảnh chưa load → dùng expect.poll chờ điều kiện ảnh, vẫn giữ assertion naturalWidth>0. Sau sửa các test đều PASS.
 
 Human Gate, vấn đáp và transfer task của sinh viên chưa được kiểm chứng bằng các test này.
