@@ -13,3 +13,8 @@ Thumbs.db
 .idea/
 .vscode/
 *.pdf
+target/
+*.dll
+*.class
+.lab-reference/
+postman-run.json
