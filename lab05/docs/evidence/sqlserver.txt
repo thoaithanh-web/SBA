@@ -1,0 +1,29 @@
+﻿Changed database context to 'OrchidManagementDB'.
+CurrentDatabase
+---------------
+OrchidManagementDB
+
+(1 rows affected)
+COLUMN_NAME DATA_TYPE CHARACTER_MAXIMUM_LENGTH IS_NULLABLE
+----------- --------- ------------------------ -----------
+OrchidID int NULL NO
+IsAttractive bit NULL NO
+IsNatural bit NULL NO
+OrchidCategory nvarchar 100 YES
+OrchidDescription nvarchar 1000 YES
+OrchidName nvarchar 150 NO
+OrchidURL varchar 1000 YES
+
+(7 rows affected)
+OrchidID OrchidName IsNatural OrchidDescription OrchidCategory IsAttractive OrchidURL
+-------- ---------- --------- ----------------- -------------- ------------ ---------
+2 Taichung Beauty 0 Cattleya sắc tím với cánh hoa mềm mại. Một điểm nhấn rực rỡ trong bộ sưu tập. Cattleya 1 http://localhost:5173/images/cattleya.svg
+3 Dendrobium Sunshine 1 Dáng hoa thanh thoát, thích ánh sáng dịu và không gian thông thoáng. Dendrobium 0 http://localhost:5173/images/dendrobium.svg
+4 Hồ điệp trắng 0 Hoa hồ điệp mang nét thanh lịch, nở bền và phù hợp để trưng bày trong nhà. Phalaenopsis 1 http://localhost:5173/images/phalaenopsis.svg
+
+(3 rows affected)
+OrchidCount
+-----------
+3
+
+(1 rows affected)

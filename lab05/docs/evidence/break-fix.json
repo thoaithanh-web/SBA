@@ -1,0 +1,16 @@
+{
+  "broken": {
+    "method": "POST",
+    "url": "http://localhost:8080/orchids",
+    "contentType": "text/plain",
+    "status": 415
+  },
+  "fixed": {
+    "contentType": "application/json",
+    "status": 201
+  },
+  "cleanup": {
+    "delete": 204,
+    "getAfterDelete": 404
+  }
+}

@@ -1,0 +1,16 @@
+[
+  {
+    "name": "fu.se.backend.orchids.OrchidApiTest",
+    "tests": "12",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0"
+  },
+  {
+    "name": "fu.se.backend.orchids.SQLServerIntegrationTest",
+    "tests": "1",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0"
+  }
+]

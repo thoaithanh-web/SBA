@@ -1,0 +1,65 @@
+{
+  "requests": {
+    "total": 10,
+    "pending": 0,
+    "failed": 0
+  },
+  "assertions": {
+    "total": 17,
+    "pending": 0,
+    "failed": 0
+  },
+  "failures": [],
+  "responses": [
+    {
+      "name": "List orchids",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "name": "Create orchid",
+      "method": "POST",
+      "status": 201
+    },
+    {
+      "name": "Get detail",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "name": "Update all fields",
+      "method": "PUT",
+      "status": 200
+    },
+    {
+      "name": "Delete orchid",
+      "method": "DELETE",
+      "status": 204
+    },
+    {
+      "name": "Deleted detail is missing",
+      "method": "GET",
+      "status": 404
+    },
+    {
+      "name": "Update missing ID",
+      "method": "PUT",
+      "status": 404
+    },
+    {
+      "name": "Delete missing ID",
+      "method": "DELETE",
+      "status": 404
+    },
+    {
+      "name": "Reject blank name",
+      "method": "POST",
+      "status": 400
+    },
+    {
+      "name": "Reject text body",
+      "method": "POST",
+      "status": 415
+    }
+  ]
+}

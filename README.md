@@ -11,6 +11,7 @@ Coursework by Lâm Thoại Thanh · CE190169 · SE1910.
 | [lab02](lab02) | Orchid SPA: Fetch, async states and 30-second cache |
 | [lab03](lab03) | Employee REST API: versioning, paging and testing |
 | [lab04](lab04) | Orchid REST API: JPA relationships and SQL Server |
+| [lab05](lab05) | Orchid full-stack SPA: React/TypeScript, Axios, Spring Boot and SQL Server |
 
 ```sh
 cd ass1/LamThoaiThanh_SE1910
@@ -27,5 +28,7 @@ The owner uses direct pushes to `main` after local verification. Commits follow 
 ## Run labs
 
 For lab01/lab02: open the lab folder, run `npm ci` then `npm run dev`. For lab03/lab04 on Windows: open the lab folder, run `.\scripts\run.ps1`. See each lab README for prerequisites, database configuration, test commands and evidence.
+
+For lab05: run `.\mvnw.cmd spring-boot:run` from `lab05/backend`, then `npm ci` and `npm run dev` from `lab05/frontend`. Prepare `OrchidManagementDB` and local database credentials as described in the [Lab05 README](lab05/README.md).
 
 Each folder is independent. AI assistance and the remaining student explanation tasks are disclosed in each lab documentation.

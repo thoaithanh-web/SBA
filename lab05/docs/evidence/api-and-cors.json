@@ -1,0 +1,36 @@
+{
+  "method": "GET",
+  "url": "http://localhost:8080/orchids",
+  "origin": "http://localhost:5173",
+  "status": 200,
+  "allowOrigin": "http://localhost:5173",
+  "rows": [
+    {
+      "orchidId": 4,
+      "orchidName": "Hồ điệp trắng",
+      "natural": false,
+      "orchidDescription": "Hoa hồ điệp mang nét thanh lịch, nở bền và phù hợp để trưng bày trong nhà.",
+      "orchidCategory": "Phalaenopsis",
+      "attractive": true,
+      "orchidURL": "http://localhost:5173/images/phalaenopsis.svg"
+    },
+    {
+      "orchidId": 3,
+      "orchidName": "Dendrobium Sunshine",
+      "natural": true,
+      "orchidDescription": "Dáng hoa thanh thoát, thích ánh sáng dịu và không gian thông thoáng.",
+      "orchidCategory": "Dendrobium",
+      "attractive": false,
+      "orchidURL": "http://localhost:5173/images/dendrobium.svg"
+    },
+    {
+      "orchidId": 2,
+      "orchidName": "Taichung Beauty",
+      "natural": false,
+      "orchidDescription": "Cattleya sắc tím với cánh hoa mềm mại. Một điểm nhấn rực rỡ trong bộ sưu tập.",
+      "orchidCategory": "Cattleya",
+      "attractive": true,
+      "orchidURL": "http://localhost:5173/images/cattleya.svg"
+    }
+  ]
+}
