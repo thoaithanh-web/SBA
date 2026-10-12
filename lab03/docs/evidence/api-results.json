@@ -1,0 +1,304 @@
+{
+  "runner": "Newman / Postman collection",
+  "date": "2026-10-12",
+  "requests": 11,
+  "failures": 0,
+  "results": [
+    {
+      "name": "List first page",
+      "method": "GET",
+      "path": "/api/employees?page=0&size=5&sort=salary,desc",
+      "status": 200,
+      "body": {
+        "content": [
+          {
+            "empId": "E025",
+            "name": "Employee 25",
+            "designation": "Developer",
+            "salary": 22500000.0
+          },
+          {
+            "empId": "E024",
+            "name": "Employee 24",
+            "designation": "Tester",
+            "salary": 22000000.0
+          },
+          {
+            "empId": "E023",
+            "name": "Employee 23",
+            "designation": "Developer",
+            "salary": 21500000.0
+          },
+          {
+            "empId": "E022",
+            "name": "Employee 22",
+            "designation": "Tester",
+            "salary": 21000000.0
+          },
+          {
+            "empId": "E021",
+            "name": "Employee 21",
+            "designation": "Developer",
+            "salary": 20500000.0
+          }
+        ],
+        "number": 0,
+        "size": 5,
+        "totalElements": 25,
+        "totalPages": 5,
+        "first": true,
+        "last": false
+      },
+      "assertions": [
+        {
+          "name": "HTTP 200",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "name": "Page 1",
+      "method": "GET",
+      "path": "/api/employees?page=1&size=5",
+      "status": 200,
+      "body": {
+        "content": [
+          {
+            "empId": "E006",
+            "name": "Employee 06",
+            "designation": "Tester",
+            "salary": 13000000.0
+          },
+          {
+            "empId": "E007",
+            "name": "Employee 07",
+            "designation": "Developer",
+            "salary": 13500000.0
+          },
+          {
+            "empId": "E008",
+            "name": "Employee 08",
+            "designation": "Tester",
+            "salary": 14000000.0
+          },
+          {
+            "empId": "E009",
+            "name": "Employee 09",
+            "designation": "Developer",
+            "salary": 14500000.0
+          },
+          {
+            "empId": "E010",
+            "name": "Employee 10",
+            "designation": "Tester",
+            "salary": 15000000.0
+          }
+        ],
+        "number": 1,
+        "size": 5,
+        "totalElements": 25,
+        "totalPages": 5,
+        "first": false,
+        "last": false
+      },
+      "assertions": [
+        {
+          "name": "HTTP 200",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "name": "Slice",
+      "method": "GET",
+      "path": "/api/employees/slice?size=5",
+      "status": 200,
+      "body": {
+        "content": [
+          {
+            "empId": "E001",
+            "name": "Employee 01",
+            "designation": "Developer",
+            "salary": 10500000.0
+          },
+          {
+            "empId": "E002",
+            "name": "Employee 02",
+            "designation": "Tester",
+            "salary": 11000000.0
+          },
+          {
+            "empId": "E003",
+            "name": "Employee 03",
+            "designation": "Developer",
+            "salary": 11500000.0
+          },
+          {
+            "empId": "E004",
+            "name": "Employee 04",
+            "designation": "Tester",
+            "salary": 12000000.0
+          },
+          {
+            "empId": "E005",
+            "name": "Employee 05",
+            "designation": "Developer",
+            "salary": 12500000.0
+          }
+        ],
+        "number": 0,
+        "size": 5,
+        "hasNext": true,
+        "first": true,
+        "last": false
+      },
+      "assertions": [
+        {
+          "name": "HTTP 200",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "name": "V2 detail",
+      "method": "GET",
+      "path": "/api/v2/employees/E001",
+      "status": 200,
+      "body": {
+        "empId": "E001",
+        "name": "Employee 01",
+        "designation": "Developer",
+        "salary": 10500000.0,
+        "email": "e001@example.edu",
+        "department": "Engineering"
+      },
+      "assertions": [
+        {
+          "name": "HTTP 200",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "name": "Create employee",
+      "method": "POST",
+      "path": "/api/employees",
+      "status": 201,
+      "body": {
+        "empId": "E900",
+        "name": "Lam Thoai Thanh",
+        "designation": "Developer",
+        "salary": 15000000.0
+      },
+      "assertions": [
+        {
+          "name": "HTTP 201",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "name": "Get created employee",
+      "method": "GET",
+      "path": "/api/employees/E900",
+      "status": 200,
+      "body": {
+        "empId": "E900",
+        "name": "Lam Thoai Thanh",
+        "designation": "Developer",
+        "salary": 15000000.0
+      },
+      "assertions": [
+        {
+          "name": "HTTP 200",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "name": "Update employee",
+      "method": "PUT",
+      "path": "/api/employees/E900",
+      "status": 200,
+      "body": {
+        "empId": "E900",
+        "name": "Updated Thanh",
+        "designation": "Developer",
+        "salary": 15000000.0
+      },
+      "assertions": [
+        {
+          "name": "HTTP 200",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "name": "Invalid employee",
+      "method": "POST",
+      "path": "/api/employees",
+      "status": 400,
+      "body": {
+        "timestamp": "2026-10-12T00:51:08.939377600Z",
+        "status": 400,
+        "message": "salary: must be greater than or equal to 0",
+        "path": "/api/employees"
+      },
+      "assertions": [
+        {
+          "name": "HTTP 400",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "name": "Delete employee",
+      "method": "DELETE",
+      "path": "/api/employees/E900",
+      "status": 204,
+      "body": null,
+      "assertions": [
+        {
+          "name": "HTTP 204",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "name": "Deleted employee returns 404",
+      "method": "GET",
+      "path": "/api/employees/E900",
+      "status": 404,
+      "body": {
+        "timestamp": "2026-10-12T00:51:09.107443100Z",
+        "status": 404,
+        "message": "Employee not found: E900",
+        "path": "/api/employees/E900"
+      },
+      "assertions": [
+        {
+          "name": "HTTP 404",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "name": "Invalid sorting",
+      "method": "GET",
+      "path": "/api/employees?sort=unknown,asc",
+      "status": 400,
+      "body": {
+        "timestamp": "2026-10-12T00:51:09.199977200Z",
+        "status": 400,
+        "message": "sort must be empId/name/designation/salary,asc/desc",
+        "path": "/api/employees"
+      },
+      "assertions": [
+        {
+          "name": "HTTP 400",
+          "passed": true
+        }
+      ]
+    }
+  ]
+}
