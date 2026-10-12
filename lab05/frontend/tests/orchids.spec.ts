@@ -32,7 +32,7 @@ test("UI create, detail, edit, refresh and delete reach the real API", async ({
   await page.getByLabel("Phân loại", { exact: true }).fill("Phalaenopsis");
   await page
     .getByLabel("URL hình ảnh")
-    .fill("http://localhost:5173/images/phalaenopsis.svg");
+    .fill("http://localhost:5173/images/hoalan1.jpg");
   await page
     .getByLabel("Mô tả", { exact: true })
     .fill("Hoa lan tiếng Việt.\nMột câu chuyện mới.");

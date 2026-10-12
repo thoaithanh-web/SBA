@@ -124,7 +124,7 @@ Collection endpoint không có dấu `/` cuối, đúng cấu trúc được cun
   "orchidDescription": "Hoa lan Cattleya",
   "orchidCategory": "Cattleya",
   "attractive": true,
-  "orchidURL": "http://localhost:5173/images/cattleya.svg"
+  "orchidURL": "http://localhost:5173/images/hoalan2.jpg"
 }
 ```
 

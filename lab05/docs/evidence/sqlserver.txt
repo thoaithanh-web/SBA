@@ -17,9 +17,9 @@ OrchidURL varchar 1000 YES
 (7 rows affected)
 OrchidID OrchidName IsNatural OrchidDescription OrchidCategory IsAttractive OrchidURL
 -------- ---------- --------- ----------------- -------------- ------------ ---------
-2 Taichung Beauty 0 Cattleya sắc tím với cánh hoa mềm mại. Một điểm nhấn rực rỡ trong bộ sưu tập. Cattleya 1 http://localhost:5173/images/cattleya.svg
-3 Dendrobium Sunshine 1 Dáng hoa thanh thoát, thích ánh sáng dịu và không gian thông thoáng. Dendrobium 0 http://localhost:5173/images/dendrobium.svg
-4 Hồ điệp trắng 0 Hoa hồ điệp mang nét thanh lịch, nở bền và phù hợp để trưng bày trong nhà. Phalaenopsis 1 http://localhost:5173/images/phalaenopsis.svg
+2 Taichung Beauty 0 Cattleya sắc tím với cánh hoa mềm mại. Một điểm nhấn rực rỡ trong bộ sưu tập. Cattleya 1 http://localhost:5173/images/hoalan2.jpg
+3 Dendrobium Sunshine 1 Dáng hoa thanh thoát, thích ánh sáng dịu và không gian thông thoáng. Dendrobium 0 http://localhost:5173/images/hoalan3.jpg
+4 Hồ điệp trắng 0 Hoa hồ điệp mang nét thanh lịch, nở bền và phù hợp để trưng bày trong nhà. Phalaenopsis 1 http://localhost:5173/images/hoalan1.jpg
 
 (3 rows affected)
 OrchidCount
