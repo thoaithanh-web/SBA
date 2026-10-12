@@ -1,0 +1,81 @@
+name: Labs 01-04
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: labs-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  react:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        lab: [lab01, lab02]
+    defaults:
+      run:
+        working-directory: ${{ matrix.lab }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: ${{ matrix.lab }}/package-lock.json
+      - run: npm ci
+      - run: npm run format:check
+      - run: npm run build
+      - run: npx playwright install --with-deps chromium
+      - run: npm test
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: ${{ matrix.lab }}-diagnostics
+          path: |
+            ${{ matrix.lab }}/playwright-report/
+            ${{ matrix.lab }}/test-results/
+  spring:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        lab: [lab03, lab04]
+    defaults:
+      run:
+        working-directory: ${{ matrix.lab }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: maven
+      - name: Prepare SQL Server for Lab04
+        if: matrix.lab == 'lab04'
+        shell: bash
+        run: |
+          password="Sba!$(openssl rand -hex 16)"
+          echo "::add-mask::$password"
+          echo "DB_PASSWORD=$password" >> "$GITHUB_ENV"
+          echo "DB_USERNAME=sa" >> "$GITHUB_ENV"
+          echo "DB_URL=jdbc:sqlserver://localhost:1433;databaseName=SBA_Lab04_Test;encrypt=true;trustServerCertificate=true" >> "$GITHUB_ENV"
+          echo "SQLSERVER_TESTS=true" >> "$GITHUB_ENV"
+          docker run -d --name sba-sqlserver -e ACCEPT_EULA=Y -e MSSQL_PID=Developer -e "MSSQL_SA_PASSWORD=$password" -p 1433:1433 mcr.microsoft.com/mssql/server:2022-latest
+          ready=false
+          for attempt in $(seq 1 60); do
+            if docker exec -e "SQLCMDPASSWORD=$password" sba-sqlserver /opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -C -b -Q "IF DB_ID(N'SBA_Lab04_Test') IS NULL CREATE DATABASE SBA_Lab04_Test;"; then
+              ready=true
+              break
+            fi
+            sleep 2
+          done
+          test "$ready" = true
+      - run: mvn -B -ntp clean verify
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: ${{ matrix.lab }}-test-reports
+          path: ${{ matrix.lab }}/target/surefire-reports/
