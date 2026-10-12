@@ -1,0 +1,90 @@
+[
+  {
+    "id": "1",
+    "orchidName": "Ceasar 4N",
+    "origin": "Taiwan",
+    "color": "Purple",
+    "category": "Dendrobium",
+    "isSpecial": true,
+    "rating": 4.8,
+    "image": "/images/orchid-1.svg",
+    "description": "Ceasar 4N is a purple orchid in the Dendrobium collection. This learning record is illustrative; growing conditions should be checked for the actual cultivar."
+  },
+  {
+    "id": "2",
+    "orchidName": "Mini Yaya",
+    "origin": "Vietnam",
+    "color": "Yellow",
+    "category": "Dendrobium",
+    "isSpecial": false,
+    "rating": 4.5,
+    "image": "/images/orchid-2.svg",
+    "description": "Mini Yaya is a yellow orchid in the Dendrobium collection. This learning record is illustrative; growing conditions should be checked for the actual cultivar."
+  },
+  {
+    "id": "3",
+    "orchidName": "Pink Lady",
+    "origin": "Thailand",
+    "color": "Pink",
+    "category": "Phalaenopsis",
+    "isSpecial": true,
+    "rating": 4.9,
+    "image": "/images/orchid-3.svg",
+    "description": "Pink Lady is a pink orchid in the Phalaenopsis collection. This learning record is illustrative; growing conditions should be checked for the actual cultivar."
+  },
+  {
+    "id": "4",
+    "orchidName": "White Moon",
+    "origin": "Vietnam",
+    "color": "White",
+    "category": "Phalaenopsis",
+    "isSpecial": false,
+    "rating": 4.6,
+    "image": "/images/orchid-4.svg",
+    "description": "White Moon is a white orchid in the Phalaenopsis collection. This learning record is illustrative; growing conditions should be checked for the actual cultivar."
+  },
+  {
+    "id": "5",
+    "orchidName": "Golden Sun",
+    "origin": "Thailand",
+    "color": "Orange",
+    "category": "Cattleya",
+    "isSpecial": true,
+    "rating": 4.7,
+    "image": "/images/orchid-5.svg",
+    "description": "Golden Sun is a orange orchid in the Cattleya collection. This learning record is illustrative; growing conditions should be checked for the actual cultivar."
+  },
+  {
+    "id": "6",
+    "orchidName": "Blue Vanda",
+    "origin": "India",
+    "color": "Violet",
+    "category": "Vanda",
+    "isSpecial": true,
+    "rating": 4.9,
+    "image": "/images/orchid-6.svg",
+    "description": "Blue Vanda is a violet orchid in the Vanda collection. This learning record is illustrative; growing conditions should be checked for the actual cultivar."
+  },
+  {
+    "id": "7",
+    "orchidName": "Ruby Star",
+    "origin": "Vietnam",
+    "color": "Red",
+    "category": "Cattleya",
+    "isSpecial": false,
+    "rating": 4.4,
+    "image": "/images/orchid-7.svg",
+    "description": "Ruby Star is a red orchid in the Cattleya collection. This learning record is illustrative; growing conditions should be checked for the actual cultivar."
+  },
+  {
+    "id": "8",
+    "orchidName": "Jade Green",
+    "origin": "China",
+    "color": "Green",
+    "category": "Cymbidium",
+    "isSpecial": false,
+    "rating": 4.6,
+    "image": "/images/orchid-8.svg",
+    "description": "Jade Green is a green orchid in the Cymbidium collection. This learning record is illustrative; growing conditions should be checked for the actual cultivar."
+  }
+]
