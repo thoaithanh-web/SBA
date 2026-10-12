@@ -1,0 +1,282 @@
+{
+  "info": {
+    "name": "SBA301 Lab05 Orchid Management",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080/orchids"
+    }
+  ],
+  "item": [
+    {
+      "name": "List orchids",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}",
+        "header": []
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"HTTP 200\", () => pm.response.to.have.status(200));",
+              "pm.test(\"JSON array\", () => pm.expect(pm.response.json()).to.be.an(\"array\"));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Create orchid",
+      "request": {
+        "method": "POST",
+        "url": "{{baseUrl}}",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"orchidName\": \"Postman verification\", \"natural\": true, \"attractive\": false, \"orchidDescription\": \"A temporary record for API verification\", \"orchidCategory\": \"Cattleya\", \"orchidURL\": \"https://example.com/orchid.jpg\"}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"HTTP 201\", () => pm.response.to.have.status(201));",
+              "pm.collectionVariables.set(\"orchidId\", pm.response.json().orchidId);",
+              "pm.test(\"Generated ID and boolean contract\", () => { const o=pm.response.json(); pm.expect(o.orchidId).to.be.above(0); pm.expect(o.natural).to.eql(true); pm.expect(o.attractive).to.eql(false); });",
+              "pm.test(\"Location header\", () => pm.expect(pm.response.headers.get(\"Location\")).to.include(\"/orchids/\"));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Get detail",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/{{orchidId}}",
+        "header": []
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"HTTP 200\", () => pm.response.to.have.status(200));",
+              "pm.test(\"Detail has all seven fields\", () => pm.expect(Object.keys(pm.response.json())).to.have.members([\"orchidId\",\"orchidName\",\"natural\",\"orchidDescription\",\"orchidCategory\",\"attractive\",\"orchidURL\"]));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Update all fields",
+      "request": {
+        "method": "PUT",
+        "url": "{{baseUrl}}/{{orchidId}}",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"orchidName\": \"Postman updated\", \"natural\": false, \"attractive\": true, \"orchidDescription\": \"A temporary record for API verification\", \"orchidCategory\": \"Cattleya\", \"orchidURL\": \"https://example.com/orchid.jpg\"}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"HTTP 200\", () => pm.response.to.have.status(200));",
+              "pm.test(\"Updated values and unchanged ID\", () => { const o=pm.response.json(); pm.expect(o.orchidId).to.eql(Number(pm.collectionVariables.get(\"orchidId\"))); pm.expect(o.orchidName).to.eql(\"Postman updated\"); pm.expect(o.natural).to.eql(false); pm.expect(o.attractive).to.eql(true); });"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Delete orchid",
+      "request": {
+        "method": "DELETE",
+        "url": "{{baseUrl}}/{{orchidId}}",
+        "header": []
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"HTTP 204\", () => pm.response.to.have.status(204));",
+              "pm.test(\"Empty response\", () => pm.expect(pm.response.text()).to.eql(\"\"));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Deleted detail is missing",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/{{orchidId}}",
+        "header": []
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"HTTP 404\", () => pm.response.to.have.status(404));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Update missing ID",
+      "request": {
+        "method": "PUT",
+        "url": "{{baseUrl}}/{{orchidId}}",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"orchidName\": \"Postman updated\", \"natural\": false, \"attractive\": true, \"orchidDescription\": \"A temporary record for API verification\", \"orchidCategory\": \"Cattleya\", \"orchidURL\": \"https://example.com/orchid.jpg\"}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"HTTP 404\", () => pm.response.to.have.status(404));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Delete missing ID",
+      "request": {
+        "method": "DELETE",
+        "url": "{{baseUrl}}/{{orchidId}}",
+        "header": []
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"HTTP 404\", () => pm.response.to.have.status(404));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Reject blank name",
+      "request": {
+        "method": "POST",
+        "url": "{{baseUrl}}",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"orchidName\": \"   \", \"natural\": true, \"attractive\": false, \"orchidDescription\": \"A temporary record for API verification\", \"orchidCategory\": \"Cattleya\", \"orchidURL\": \"https://example.com/orchid.jpg\"}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"HTTP 400\", () => pm.response.to.have.status(400));",
+              "pm.test(\"Validation detail\", () => pm.expect(pm.response.json().errors).to.have.property(\"orchidName\"));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Reject text body",
+      "request": {
+        "method": "POST",
+        "url": "{{baseUrl}}",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "text/plain"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"orchidName\": \"Postman verification\", \"natural\": true, \"attractive\": false, \"orchidDescription\": \"A temporary record for API verification\", \"orchidCategory\": \"Cattleya\", \"orchidURL\": \"https://example.com/orchid.jpg\"}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"HTTP 415\", () => pm.response.to.have.status(415));"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+USE OrchidManagementDB;
+GO
+SELECT DB_NAME() AS CurrentDatabase;
+SELECT COLUMN_NAME, DATA_TYPE, CHARACTER_MAXIMUM_LENGTH, IS_NULLABLE
+FROM INFORMATION_SCHEMA.COLUMNS
+WHERE TABLE_SCHEMA = 'dbo' AND TABLE_NAME = 'Orchid'
+ORDER BY ORDINAL_POSITION;
+SELECT OrchidID, OrchidName, IsNatural, OrchidDescription,
+       OrchidCategory, IsAttractive, OrchidURL
+FROM dbo.Orchid
+ORDER BY OrchidID;
+SELECT COUNT(*) AS OrchidCount FROM dbo.Orchid;
