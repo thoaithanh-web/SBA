@@ -1,0 +1,41 @@
+[
+  {
+    "case": "B5",
+    "method": "POST",
+    "path": "/api/orchids",
+    "expectedStatus": 400,
+    "actualStatus": 400,
+    "response": {
+      "timestamp": "2026-10-12T00:51:09.817847900Z",
+      "status": 400,
+      "message": "Category not found: 9223372036854775807",
+      "path": "/api/orchids"
+    }
+  },
+  {
+    "case": "B6",
+    "method": "GET",
+    "path": "/api/orchids/9223372036854775807",
+    "expectedStatus": 404,
+    "actualStatus": 404,
+    "response": {
+      "timestamp": "2026-10-12T00:51:09.824627800Z",
+      "status": 404,
+      "message": "Orchid not found: 9223372036854775807",
+      "path": "/api/orchids/9223372036854775807"
+    }
+  },
+  {
+    "case": "B7",
+    "method": "POST",
+    "path": "/api/orchids",
+    "expectedStatus": 400,
+    "actualStatus": 400,
+    "response": {
+      "timestamp": "2026-10-12T00:51:09.827583Z",
+      "status": 400,
+      "message": "Malformed JSON or invalid parameter type",
+      "path": "/api/orchids"
+    }
+  }
+]

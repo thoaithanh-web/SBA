@@ -1,0 +1,29 @@
+{
+  "beforeRestart": {
+    "orchidID": 3,
+    "orchidName": "Cattleya persistence bloom",
+    "orchidDescription": "This demo record verifies SQL Server durability across application restart.",
+    "orchidCategory": {
+      "categoryId": 3,
+      "categoryName": "Persistence evidence"
+    },
+    "orchidURL": "https://example.edu/orchid.svg",
+    "isNatural": true,
+    "isAttractive": true
+  },
+  "afterRestart": {
+    "orchidID": 3,
+    "orchidName": "Cattleya persistence bloom",
+    "orchidDescription": "This demo record verifies SQL Server durability across application restart.",
+    "orchidCategory": {
+      "categoryId": 3,
+      "categoryName": "Persistence evidence"
+    },
+    "orchidURL": "https://example.edu/orchid.svg",
+    "isNatural": true,
+    "isAttractive": true
+  },
+  "equal": true,
+  "database": "SBA_Lab04_Orchid",
+  "note": "Created via packaged JAR before shutdown; read after restarting the application via the verified run script."
+}

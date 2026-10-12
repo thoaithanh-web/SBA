@@ -1,0 +1,7 @@
+Tests run: 9, Failures: 0, Errors: 3, Skipped: 0, Time elapsed: 8.400 s <<< FAILURE! -- in com.example.orchid.SQLServerIntegrationTest
+org.springframework.jdbc.UncategorizedSQLException: PreparedStatementCallback; uncategorized SQLException for SQL [SELECT category_id FROM orchids WHERE orchid_id=?]; SQL state [S0001]; error code [207]; Invalid column name 'orchid_id'.
+Caused by: com.microsoft.sqlserver.jdbc.SQLServerException: Invalid column name 'orchid_id'.
+org.springframework.jdbc.UncategorizedSQLException: PreparedStatementCallback; uncategorized SQLException for SQL [SELECT category_id FROM orchids WHERE orchid_id=?]; SQL state [S0001]; error code [207]; Invalid column name 'orchid_id'.
+Caused by: com.microsoft.sqlserver.jdbc.SQLServerException: Invalid column name 'orchid_id'.
+org.springframework.jdbc.UncategorizedSQLException: PreparedStatementCallback; uncategorized SQLException for SQL [SELECT orchid_name FROM orchids WHERE orchid_id=?]; SQL state [S0001]; error code [207]; Invalid column name 'orchid_id'.
+Caused by: com.microsoft.sqlserver.jdbc.SQLServerException: Invalid column name 'orchid_id'.

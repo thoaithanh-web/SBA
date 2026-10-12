@@ -1,0 +1,26 @@
+[
+  {
+    "method": "PUT",
+    "path": "/api/orchids/9223372036854775807",
+    "expected": 404,
+    "actual": 404,
+    "response": {
+      "timestamp": "2026-10-12T00:58:02.260393100Z",
+      "status": 404,
+      "message": "Orchid not found: 9223372036854775807",
+      "path": "/api/orchids/9223372036854775807"
+    }
+  },
+  {
+    "method": "DELETE",
+    "path": "/api/orchids/9223372036854775807",
+    "expected": 404,
+    "actual": 404,
+    "response": {
+      "timestamp": "2026-10-12T00:58:02.270997300Z",
+      "status": 404,
+      "message": "Orchid not found: 9223372036854775807",
+      "path": "/api/orchids/9223372036854775807"
+    }
+  }
+]

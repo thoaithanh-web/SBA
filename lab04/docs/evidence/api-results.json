@@ -1,0 +1,215 @@
+{
+  "runner": "Newman / Postman collection",
+  "date": "2026-10-12",
+  "requests": 11,
+  "failures": 0,
+  "results": [
+    {
+      "name": "Create category",
+      "method": "POST",
+      "path": "/api/categories",
+      "status": 201,
+      "body": {
+        "categoryId": 2,
+        "categoryName": "Lab04 Postman Category"
+      },
+      "assertions": [
+        {
+          "name": "HTTP 201",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "name": "List orchids",
+      "method": "GET",
+      "path": "/api/orchids",
+      "status": 200,
+      "body": [],
+      "assertions": [
+        {
+          "name": "HTTP 200",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "name": "Create orchid",
+      "method": "POST",
+      "path": "/api/orchids",
+      "status": 201,
+      "body": {
+        "orchidID": 2,
+        "orchidName": "Cattleya Queen",
+        "orchidDescription": "Lab04 Postman example",
+        "orchidCategory": {
+          "categoryId": 2,
+          "categoryName": "Lab04 Postman Category"
+        },
+        "orchidURL": "https://example.edu/orchid.svg",
+        "isNatural": true,
+        "isAttractive": true
+      },
+      "assertions": [
+        {
+          "name": "HTTP 201",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "name": "Read orchid",
+      "method": "GET",
+      "path": "/api/orchids/2",
+      "status": 200,
+      "body": {
+        "orchidID": 2,
+        "orchidName": "Cattleya Queen",
+        "orchidDescription": "Lab04 Postman example",
+        "orchidCategory": {
+          "categoryId": 2,
+          "categoryName": "Lab04 Postman Category"
+        },
+        "orchidURL": "https://example.edu/orchid.svg",
+        "isNatural": true,
+        "isAttractive": true
+      },
+      "assertions": [
+        {
+          "name": "HTTP 200",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "name": "Search orchids",
+      "method": "GET",
+      "path": "/api/orchids?name=cattleya",
+      "status": 200,
+      "body": [
+        {
+          "orchidID": 2,
+          "orchidName": "Cattleya Queen",
+          "orchidDescription": "Lab04 Postman example",
+          "orchidCategory": {
+            "categoryId": 2,
+            "categoryName": "Lab04 Postman Category"
+          },
+          "orchidURL": "https://example.edu/orchid.svg",
+          "isNatural": true,
+          "isAttractive": true
+        }
+      ],
+      "assertions": [
+        {
+          "name": "HTTP 200",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "name": "Update orchid",
+      "method": "PUT",
+      "path": "/api/orchids/2",
+      "status": 200,
+      "body": {
+        "orchidID": 2,
+        "orchidName": "Cattleya Updated",
+        "orchidDescription": "Lab04 Postman example",
+        "orchidCategory": {
+          "categoryId": 2,
+          "categoryName": "Lab04 Postman Category"
+        },
+        "orchidURL": "https://example.edu/orchid.svg",
+        "isNatural": false,
+        "isAttractive": true
+      },
+      "assertions": [
+        {
+          "name": "HTTP 200",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "name": "Invalid category",
+      "method": "POST",
+      "path": "/api/orchids",
+      "status": 400,
+      "body": {
+        "timestamp": "2026-10-12T00:51:08.879837100Z",
+        "status": 400,
+        "message": "Category not found: 9223372036854775807",
+        "path": "/api/orchids"
+      },
+      "assertions": [
+        {
+          "name": "HTTP 400",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "name": "Block linked category deletion",
+      "method": "DELETE",
+      "path": "/api/categories/2",
+      "status": 409,
+      "body": {
+        "timestamp": "2026-10-12T00:51:08.946866800Z",
+        "status": 409,
+        "message": "Category still contains orchids",
+        "path": "/api/categories/2"
+      },
+      "assertions": [
+        {
+          "name": "HTTP 409",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "name": "Delete orchid",
+      "method": "DELETE",
+      "path": "/api/orchids/2",
+      "status": 204,
+      "body": null,
+      "assertions": [
+        {
+          "name": "HTTP 204",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "name": "Deleted orchid returns 404",
+      "method": "GET",
+      "path": "/api/orchids/2",
+      "status": 404,
+      "body": {
+        "timestamp": "2026-10-12T00:51:09.142448100Z",
+        "status": 404,
+        "message": "Orchid not found: 2",
+        "path": "/api/orchids/2"
+      },
+      "assertions": [
+        {
+          "name": "HTTP 404",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "name": "Delete unused category",
+      "method": "DELETE",
+      "path": "/api/categories/2",
+      "status": 204,
+      "body": null,
+      "assertions": [
+        {
+          "name": "HTTP 204",
+          "passed": true
+        }
+      ]
+    }
+  ]
+}

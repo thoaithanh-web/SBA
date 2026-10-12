@@ -1,0 +1,5 @@
+IF DB_ID(N'SBA_Lab04_Orchid') IS NULL
+BEGIN
+    CREATE DATABASE SBA_Lab04_Orchid;
+END;
+GO

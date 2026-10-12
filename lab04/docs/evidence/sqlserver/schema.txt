@@ -1,0 +1,28 @@
+TABLE_NAME COLUMN_NAME DATA_TYPE IS_NULLABLE
+---------- ----------- --------- -----------
+orchid_categories category_id bigint NO
+orchid_categories category_name varchar NO
+orchids orchid_id bigint NO
+orchids is_attractive bit NO
+orchids is_natural bit NO
+orchids orchid_description varchar YES
+orchids orchid_name varchar NO
+orchids orchidurl varchar NO
+orchids category_id bigint NO
+
+(9 rows affected)
+name source_table target_table
+---- ------------ ------------
+FK1nau98c2g1u4qk2nx7fmj0dt5 orchids orchid_categories
+
+(1 rows affected)
+orchid_id orchid_name category_id
+--------- ----------- -----------
+3 Cattleya persistence bloom 3
+
+(1 rows affected)
+category_id category_name
+----------- -------------
+3 Persistence evidence
+
+(1 rows affected)
