@@ -13,8 +13,8 @@ if ($maven) { $command = $maven.Source } else {
         New-Item -ItemType Directory -Force -Path $toolsRoot | Out-Null
         $url = 'https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/3.9.12/apache-maven-3.9.12-bin.zip'
         $archive = Join-Path $toolsRoot 'maven.zip'
-        Invoke-WebRequest -Uri $url -OutFile $archive
-        $expected = ((Invoke-WebRequest -Uri ($url + '.sha512')).Content.Trim() -split '\s+')[0]
+        Invoke-WebRequest -UseBasicParsing -Uri $url -OutFile $archive
+        $expected = ((Invoke-WebRequest -UseBasicParsing -Uri ($url + '.sha512')).Content.Trim() -split '\s+')[0]
         if ((Get-FileHash -LiteralPath $archive -Algorithm SHA512).Hash.ToLowerInvariant() -ne $expected.ToLowerInvariant()) { throw 'Maven checksum mismatch.' }
         Expand-Archive -LiteralPath $archive -DestinationPath $toolsRoot -Force
     }
