@@ -7,7 +7,10 @@ Coursework by Lâm Thoại Thanh · CE190169 · SE1910.
 | Folder | Content |
 | --- | --- |
 | [ass1/LamThoaiThanh_SE1910](ass1/LamThoaiThanh_SE1910) | Assignment 01: FUNewsManagementSystem |
-| `lab01/`, `lab02/`, … | Reserved naming for future labs; add each separately |
+| [lab01](lab01) | React Orchid Gallery: components, props and state |
+| [lab02](lab02) | Orchid SPA: Fetch, async states and 30-second cache |
+| [lab03](lab03) | Employee REST API: versioning, paging and testing |
+| [lab04](lab04) | Orchid REST API: JPA relationships and SQL Server |
 
 ```sh
 cd ass1/LamThoaiThanh_SE1910
