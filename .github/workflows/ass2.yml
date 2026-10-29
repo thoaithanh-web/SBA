@@ -1,0 +1,84 @@
+# Author: Lam Thoai Thanh - CE190169
+name: Assignment 02
+on:
+  push:
+    branches: [main]
+    paths: ['ass2/**', '.github/workflows/ass2.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: ass2-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  full-stack:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      SQLSERVER_TESTS: 'true'
+      DB_USERNAME: sa
+      DB_URL: jdbc:sqlserver://localhost:1433;databaseName=A2LamThoaiThanh_SE1910;encrypt=true;trustServerCertificate=true
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: maven
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: ass2/frontend/A2LamThoaiThanh_SE1910/package-lock.json
+      - name: Start isolated SQL Server and seed assignment database
+        shell: bash
+        run: |
+          db_password="A2-$(openssl rand -hex 16)!aA1"
+          echo "::add-mask::$db_password"
+          echo "DB_PASSWORD=$db_password" >> "$GITHUB_ENV"
+          docker run -d --name ass2-sql -e ACCEPT_EULA=Y -e MSSQL_SA_PASSWORD="$db_password" -p 1433:1433 mcr.microsoft.com/mssql/server:2022-latest
+          ready=false
+          for attempt in {1..60}; do
+            if docker exec -e SQLCMDPASSWORD="$db_password" ass2-sql /opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -C -b -Q 'SELECT 1' >/dev/null 2>&1; then ready=true; break; fi
+            sleep 2
+          done
+          test "$ready" = true
+          docker cp ass2/backend/A2LamThoaiThanh_SE1910/sql/001-schema-and-seed.sql ass2-sql:/tmp/ass2.sql
+          docker exec -e SQLCMDPASSWORD="$db_password" ass2-sql /opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -C -b -f 65001 -i /tmp/ass2.sql
+      - name: Verify backend against H2 and real SQL Server
+        working-directory: ass2/backend/A2LamThoaiThanh_SE1910
+        run: mvn -B verify
+      - name: Start backend
+        working-directory: ass2/backend/A2LamThoaiThanh_SE1910
+        run: |
+          java -jar target/A2LamThoaiThanh_SE1910-1.0.0.jar > backend.log 2>&1 &
+          ready=false
+          for attempt in {1..60}; do
+            if curl -fsS http://localhost:8082/api/public/news >/dev/null; then ready=true; break; fi
+            sleep 2
+          done
+          test "$ready" = true
+      - name: Install frontend and browser
+        working-directory: ass2/frontend/A2LamThoaiThanh_SE1910
+        run: |
+          npm ci
+          npx playwright install --with-deps chromium
+      - name: Check formatting, lint and production build
+        working-directory: ass2/frontend/A2LamThoaiThanh_SE1910
+        run: |
+          npm run format:check
+          npm run lint
+          npm run build
+      - name: Exercise browser workflows against SQL Server
+        working-directory: ass2/frontend/A2LamThoaiThanh_SE1910
+        run: npm test
+      - name: Upload verification reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ass2-verification
+          path: |
+            ass2/backend/A2LamThoaiThanh_SE1910/target/surefire-reports/
+            ass2/backend/A2LamThoaiThanh_SE1910/backend.log
+            ass2/frontend/A2LamThoaiThanh_SE1910/playwright-report/
+          retention-days: 14
