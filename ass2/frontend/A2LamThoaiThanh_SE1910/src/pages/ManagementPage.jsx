@@ -89,8 +89,8 @@ export default function ManagementPage({ resource, history = false }) {
       });
     return () => controller.abort();
   }, [resource, keyword, page, revision, setParams]);
-  const idOf = (r) => r.accountId ?? r.categoryId ?? r.newsArticleId;
-  const nameOf = (r) => r.accountName ?? r.categoryName ?? r.newsTitle;
+  const idOf = (r) => r.newsArticleId ?? r.accountId ?? r.categoryId;
+  const nameOf = (r) => r.newsTitle ?? r.accountName ?? r.categoryName;
   async function openEdit(r, view = false) {
     if (opening) return;
     setOpening(true);

@@ -36,8 +36,11 @@ export default function App() {
   return (
     <AuthProvider>
       <Routes>
-        <Route path="/" element={<PublicNews />} />
-        <Route path="/news/:id" element={<PublicNews detail />} />
+        <Route path="/" element={<PublicNews key="public-list" />} />
+        <Route
+          path="/news/:id"
+          element={<PublicNews key="public-detail" detail />}
+        />
         <Route path="/login" element={<Login />} />
         <Route element={<Protected />}>
           <Route element={<EditorialLayout />}>

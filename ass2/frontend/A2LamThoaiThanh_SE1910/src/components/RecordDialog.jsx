@@ -174,7 +174,7 @@ export default function RecordDialog({ resource, record, onClose, onSaved }) {
               name: "tags",
               label: "Tags",
               max: 650,
-              help: "Comma-separated, up to12 tags. Existing names are reused; new names create tags.",
+              help: "Comma-separated, up to 12 tags. Existing names are reused; new names create tags.",
             },
             { name: "newsStatus", label: "Published", checkbox: true },
           ];
@@ -193,7 +193,7 @@ export default function RecordDialog({ resource, record, onClose, onSaved }) {
       values.password &&
       values.password.length < 6
     ) {
-      setError("New passwords must contain 6 to64 characters.");
+      setError("New passwords must contain 6 to 64 characters.");
       return;
     }
     let payload;
@@ -229,7 +229,7 @@ export default function RecordDialog({ resource, record, onClose, onSaved }) {
         ).values(),
       ];
       if (names.length > 12 || names.some((x) => x.length > 50)) {
-        setError("Use up to12 tags with at most50 characters each.");
+        setError("Use up to 12 tags with at most 50 characters each.");
         return;
       }
       payload = {
@@ -253,7 +253,7 @@ export default function RecordDialog({ resource, record, onClose, onSaved }) {
           : editing
             ? await updateRecord(
                 resource,
-                record.accountId ?? record.categoryId ?? record.newsArticleId,
+                record.newsArticleId ?? record.accountId ?? record.categoryId,
                 payload,
               )
             : await createRecord(resource, payload);
