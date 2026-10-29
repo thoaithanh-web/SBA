@@ -1,3 +1,4 @@
+<!-- Author: Lam Thoai Thanh - CE190169 -->
 # Assignment 02 requirements and interpretation
 
 Author: Lam Thoai Thanh - CE190169 · SE1910.

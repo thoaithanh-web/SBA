@@ -1,0 +1,33 @@
+{
+  "author": "Lam Thoai Thanh - CE190169",
+  "verifiedAt": "2026-10-29T16:18:29.792819+00:00",
+  "backend": [
+    {
+      "suite": "fu.se.ass2.AssignmentApiTest",
+      "tests": 18,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "fu.se.ass2.SQLServerIntegrationTest",
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  ],
+  "frontend": {
+    "formatCheck": "passed",
+    "eslint": "passed",
+    "productionBuild": "passed",
+    "playwright": {
+      "tests": 9,
+      "passed": 9,
+      "failed": 0,
+      "durationSeconds": 26.0
+    }
+  },
+  "database": "A2LamThoaiThanh_SE1910 on Microsoft SQL Server",
+  "scope": "Local Windows verification; see GitHub Actions for independent CI run"
+}
