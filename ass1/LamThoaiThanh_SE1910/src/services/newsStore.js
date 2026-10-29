@@ -1,3 +1,4 @@
+// Author: Lam Thoai Thanh - CE190169
 import { createSeedData } from '../data/seed'
 
 export const DATA_KEY = 'fu-news:data:v1'

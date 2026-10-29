@@ -41,7 +41,7 @@ npm run build
 npm test
 ```
 
-Application and test code must not contain comments. Put explanations in `docs/`.
+Application and test code may start with the owner-requested author header. Use `// Author: Lam Thoai Thanh - CE190169` for JavaScript/JSX and equivalent valid comment syntax for CSS/HTML. Put other explanations in `docs/`.
 
 ## Versions
 

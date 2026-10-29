@@ -1,3 +1,4 @@
+// Author: Lam Thoai Thanh - CE190169
 import { useState } from 'react'
 import { Alert, Button, Modal } from 'react-bootstrap'
 import { Trash2 } from 'lucide-react'

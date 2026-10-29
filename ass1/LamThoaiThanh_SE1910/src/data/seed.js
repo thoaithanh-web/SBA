@@ -1,3 +1,4 @@
+// Author: Lam Thoai Thanh - CE190169
 export function createSeedData() {
   return {
     version: 1,

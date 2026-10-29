@@ -1,3 +1,4 @@
+// Author: Lam Thoai Thanh - CE190169
 export default function PageHeading({ title, description, children }) {
   return (
     <div className="page-heading">

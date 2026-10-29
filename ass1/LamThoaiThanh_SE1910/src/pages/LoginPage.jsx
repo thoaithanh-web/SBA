@@ -1,3 +1,4 @@
+// Author: Lam Thoai Thanh - CE190169
 import { useState } from 'react'
 import { Navigate, useLocation } from 'react-router-dom'
 import { ArrowRight, Eye, EyeOff, Newspaper, Quote } from 'lucide-react'

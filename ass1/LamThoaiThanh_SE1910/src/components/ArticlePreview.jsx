@@ -1,3 +1,4 @@
+// Author: Lam Thoai Thanh - CE190169
 import { Button, Modal } from 'react-bootstrap'
 import { useNews } from '../context/NewsContext'
 import StatusBadge from './StatusBadge'

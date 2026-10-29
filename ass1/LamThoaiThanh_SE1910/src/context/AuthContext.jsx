@@ -1,3 +1,4 @@
+// Author: Lam Thoai Thanh - CE190169
 import { createContext, useContext, useState } from 'react'
 
 const AuthContext = createContext(null)

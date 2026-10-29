@@ -1,3 +1,4 @@
+// Author: Lam Thoai Thanh - CE190169
 import { test, expect } from '@playwright/test'
 import { login } from './helpers'
 

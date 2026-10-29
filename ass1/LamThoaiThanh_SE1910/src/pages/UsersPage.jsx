@@ -1,3 +1,4 @@
+// Author: Lam Thoai Thanh - CE190169
 import EntityPage from './EntityPage'
 import StatusBadge from '../components/StatusBadge'
 import { initials } from '../utils/format'

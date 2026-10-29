@@ -1,3 +1,4 @@
+// Author: Lam Thoai Thanh - CE190169
 export default function Brand({ compact = false }) {
   return (
     <div className={`brand ${compact ? 'brand-compact' : ''}`}>

@@ -1,3 +1,4 @@
+// Author: Lam Thoai Thanh - CE190169
 import { useRef, useState } from 'react'
 import { Alert, Button, Form, Modal } from 'react-bootstrap'
 import { useNews } from '../context/NewsContext'

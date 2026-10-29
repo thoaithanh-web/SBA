@@ -1,3 +1,4 @@
+// Author: Lam Thoai Thanh - CE190169
 import { defineConfig, devices } from '@playwright/test'
 
 export default defineConfig({

@@ -1,3 +1,4 @@
+// Author: Lam Thoai Thanh - CE190169
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom'
 import { AuthProvider, useAuth } from './context/AuthContext'
 import LoginPage from './pages/LoginPage'

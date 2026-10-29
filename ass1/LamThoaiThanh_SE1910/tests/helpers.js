@@ -1,3 +1,4 @@
+// Author: Lam Thoai Thanh - CE190169
 import { expect } from '@playwright/test'
 
 export async function login(page, path = '/dashboard') {

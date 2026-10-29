@@ -1,3 +1,4 @@
+// Author: Lam Thoai Thanh - CE190169
 import { SearchX } from 'lucide-react'
 
 export default function EmptyState({

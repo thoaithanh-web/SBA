@@ -1,3 +1,4 @@
+// Author: Lam Thoai Thanh - CE190169
 export default function StatusBadge({ status, article = false }) {
   return (
     <span className={`status-badge ${status === 1 ? '' : 'inactive'}`}>

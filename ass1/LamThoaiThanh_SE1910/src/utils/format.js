@@ -1,3 +1,4 @@
+// Author: Lam Thoai Thanh - CE190169
 export function formatDate(value) {
   return new Intl.DateTimeFormat('en-GB', {
     day: 'numeric',

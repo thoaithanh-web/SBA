@@ -1,3 +1,4 @@
+// Author: Lam Thoai Thanh - CE190169
 import { Newspaper } from 'lucide-react'
 import EntityPage from './EntityPage'
 import StatusBadge from '../components/StatusBadge'
