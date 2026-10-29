@@ -1,0 +1,62 @@
+[
+  {
+    "case": "create account",
+    "status": 201
+  },
+  {
+    "case": "create category",
+    "status": 201
+  },
+  {
+    "case": "create news with tags",
+    "status": 201
+  },
+  {
+    "case": "anonymous draft hidden",
+    "status": 404
+  },
+  {
+    "case": "category reference guard",
+    "status": 409
+  },
+  {
+    "case": "created account reference guard",
+    "status": 409
+  },
+  {
+    "case": "update publish",
+    "status": 200
+  },
+  {
+    "case": "public published detail",
+    "status": 200
+  },
+  {
+    "case": "own history",
+    "status": 200
+  },
+  {
+    "case": "staff forbidden account",
+    "status": 403
+  },
+  {
+    "case": "admin forbidden category",
+    "status": 403
+  },
+  {
+    "case": "write without CSRF",
+    "status": 403
+  },
+  {
+    "case": "delete article",
+    "status": 204
+  },
+  {
+    "case": "delete free category",
+    "status": 204
+  },
+  {
+    "case": "delete free account",
+    "status": 204
+  }
+]
