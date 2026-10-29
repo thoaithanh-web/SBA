@@ -1,0 +1,12 @@
+**/node_modules/
+**/target/
+**/dist/
+**/test-results/
+**/playwright-report/
+**/.env
+**/.env.*
+!**/.env.example
+**/config/application-local.properties
+**/*.log
+**/.idea/
+.runtime/
