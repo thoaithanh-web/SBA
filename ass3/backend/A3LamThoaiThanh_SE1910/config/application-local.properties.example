@@ -1,0 +1,3 @@
+# Author: Lam Thoai Thanh - CE190169
+spring.datasource.password=
+app.staff.password=
