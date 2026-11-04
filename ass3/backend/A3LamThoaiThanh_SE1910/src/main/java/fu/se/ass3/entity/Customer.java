@@ -23,8 +23,8 @@ public class Customer {
     private String email;
     @Column(name = "CustomerBirthday")
     private LocalDate birthday;
-    @Column(name = "CustomerStatus", nullable = false)
+    @Column(name = "CustomerStatus", columnDefinition = "tinyint", nullable = false)
     private byte status = 1;
-    @Column(name = "Password", length = 100, nullable = false)
+    @Nationalized @Column(name = "Password", length = 100, nullable = false)
     private String passwordHash;
 }

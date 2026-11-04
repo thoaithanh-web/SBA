@@ -23,6 +23,6 @@ public class BookingDetail {
     private LocalDate startDate;
     @Column(name = "EndDate", nullable = false)
     private LocalDate endDate;
-    @Column(name = "ActualPrice", precision = 19, scale = 4, nullable = false)
+    @Column(name = "ActualPrice", columnDefinition = "money", nullable = false)
     private BigDecimal actualPrice;
 }

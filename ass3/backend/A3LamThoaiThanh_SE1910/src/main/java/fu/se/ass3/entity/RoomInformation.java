@@ -24,8 +24,8 @@ public class RoomInformation {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "RoomTypeID")
     private RoomType type;
-    @Column(name = "RoomStatus", nullable = false)
+    @Column(name = "RoomStatus", columnDefinition = "tinyint", nullable = false)
     private byte status = 1;
-    @Column(name = "RoomPricePerDay", precision = 19, scale = 4, nullable = false)
+    @Column(name = "RoomPricePerDay", columnDefinition = "money", nullable = false)
     private BigDecimal pricePerDay;
 }
